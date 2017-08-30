@@ -21,6 +21,7 @@
     }
   },
   moveHandling: function(position) {
+    console.log('start moveHandling' + position);
     var isOwnPiece      = this.marker === GAME.board[position];
     var isEmptyPosition = GAME.board[position] === undefined;
     var hasPieceSelected = this.pieceSelected   !== undefined;

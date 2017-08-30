@@ -3,7 +3,8 @@ var GAME = {
   init : function() {
     this.players        = [];
     this.players[0]     = new AI('Daenerys', true);
-    this.players[1]     = new Human('Jon Snow', false);
+    // this.players[1]     = new Human('Jon Snow', false);
+    this.players[1]     = new Network('http://localhost', '5000', 'Jon Snow', false);
     this.currentPlayer  = this.players[Math.round(Math.random())];
     this.winMessage     = false;
     this.newGameButton  = false;
@@ -42,10 +43,11 @@ var GAME = {
     }
   },
   run : function() {
-    var isAI = this.currentPlayer.type === 'AI'
+    var isAI = this.currentPlayer.type === 'AI';
+    var isNetwork = this.currentPlayer.type === 'network';
     // If it's an AI he has to pick a position
     // If it's a human, we wait for him to click
-    if(isAI) {
+    if(isAI || isNetwork) {
       var position = this.currentPlayer.pickPosition();
     }
   },
