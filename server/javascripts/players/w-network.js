@@ -11,10 +11,8 @@
         port: port
     }
   },
-  pickPosition: function(position) {
-      var position, piecePosition, pieceAndPosition;
-
-      requestAddress = this.server.address + ':' + this.server.port;
+  pickPosition: function() {
+      var requestAddress = this.server.address + ':' + this.server.port;
       switch(this.phase) {
           case PHASE.PLACING:
               requestAddress += '/placing';
@@ -27,7 +25,7 @@
               console.error('bad phase!')
       }
 
-      var gameBoard = GAME.board
+      var gameBoard = GAME.board;
       if(this.marker === false) {
           gameBoard = _.map(GAME.board, function (x) {
               if (x === true) {
@@ -62,45 +60,11 @@
               console.error('bad phase!')
       }
   },
-    findPlacingPosition : function() {
-        var selectedPosition, dangerPosition;
-        var weightedLines = this.setLinesWeight();
-
-        var dangerLine = this.dangerousEnemyLine();
-        if (dangerLine !== undefined) {
-            dangerPosition = this.pickEmptyPositionFromLine(dangerLine);
-        }
-
-        if (!_.isEmpty(weightedLines)) {
-            weightedLines = _.sortBy(weightedLines, function(line) { return -line[1]; });
-            if (_.first(weightedLines)[1] === 2) {
-                selectedPosition = this.pickEmptyPositionFromLine(_.first(weightedLines)[0]);
-            } else if (dangerPosition !== undefined) {
-                selectedPosition = dangerPosition;
-            } else {
-                selectedPosition = this.pickEmptyPositionFromLine(_.first(weightedLines)[0]);
-            }
-        }
-
-        if (selectedPosition === undefined) {
-            if (dangerPosition !== undefined) {
-                selectedPosition = dangerPosition;
-            } else {
-                var emptyLine = this.getEmptyLine();
-                if (emptyLine !== undefined) {
-                    selectedPosition = _.shuffle(emptyLine)[0];
-                } else {
-                    selectedPosition = _.random(GAME.boardSize - 1);
-                }
-            }
-        }
-        return selectedPosition;
-    },
     selectEnemyPiece : function() {
         requestAddress = this.server.address + ':' + this.server.port;
         requestAddress += '/selectEnemyPiece';
 
-        var gameBoard = GAME.board
+        var gameBoard = GAME.board;
         if(this.marker === false) {
             gameBoard = _.map(GAME.board, function (x) {
                 if (x === true) {
@@ -122,6 +86,6 @@
 
         var data = JSON.parse(xhttp.responseText);
         return data.selectedPiece
-    },
+    }
 
 });
