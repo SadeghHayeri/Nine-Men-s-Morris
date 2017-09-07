@@ -7,7 +7,6 @@
 
 class client: public ngrest::Service {
 public:
-//    std::string echo(const std::vector<int> &text);
 
     // *method: POST
     int placing(int phase, std::vector<int> board);
