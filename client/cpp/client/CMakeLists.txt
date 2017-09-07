@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 2.6)
+
+project (client CXX)
+
+set(CLIENT_HEADERS client.h)
+
+set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(CLIENT_CODEGEN_DIR "${PROJECT_BINARY_DIR}/codegen")
+
+PREPEND(CLIENT_HEADERS_PATHS ${PROJECT_SOURCE_DIR} ${CLIENT_HEADERS})
+
+CODEGEN_FILES(CLIENT_CODEGEN_SOURCES ${CLIENT_CODEGEN_DIR} ${CLIENT_HEADERS})
+
+add_custom_command(OUTPUT ${CLIENT_CODEGEN_SOURCES}
+    COMMAND ${NGREST_BIN_PATH}ngrestcg -i "${PROJECT_SOURCE_DIR}" -o ${CLIENT_CODEGEN_DIR} -t service ${CLIENT_HEADERS}
+    DEPENDS ${CLIENT_HEADERS_PATHS}
+)
+
+file(GLOB CLIENT_SOURCES ${PROJECT_SOURCE_DIR}/*.cpp)
+
+list(APPEND CLIENT_SOURCES ${CLIENT_CODEGEN_SOURCES})
+
+include_directories(${PROJECT_SOURCE_DIR} $ENV{NGREST_EXT_INCLUDES})
+
+add_library(client MODULE ${CLIENT_SOURCES})
+
+set_target_properties(client PROPERTIES PREFIX "")
+set_target_properties(client PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SERVICES_DIR}"
+)
+
+target_link_libraries(client ngrestutils ngrestcommon ngrestjson ngrestengine $ENV{NGREST_EXT_LIBS})
