@@ -16,7 +16,7 @@ var GAME = {
     this.boardSize      = boardSize;
     this.board          = [];
     this.boardHistory   = []; // The board is the same for three times                    = tie
-    this.speed          = 100;
+    this.speed          = 500;
     while(boardSize--) this.board.push(undefined);
     this.graph = [
                     [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 0],
@@ -83,22 +83,14 @@ var GAME = {
         currentPlayer.stockPieces--;
 
         this.isDestructionOption(position);
-      } else if(this.getCurrentPhase() === PHASE.MOVING ) {
-        var isAI = this.currentPlayer.type === 'AI';
-        var isNetwrok = this.currentPlayer.type === 'network';
-        if(isAI || isNetwrok) {
-          this.board[position] = currentPlayer.marker;
-          UI.Pieces.drawPiece(position, currentPlayer.marker);
-        }
-        this.isDestructionOption(position);
-      } else if(this.getCurrentPhase() === PHASE.FLYING) {
-        var isAI = this.currentPlayer.type === 'AI';
-        var isNetwrok = this.currentPlayer.type === 'network';
-        if(isAI || isNetwrok) {
-          this.board[position] = currentPlayer.marker;
-          UI.Pieces.drawPiece(position, currentPlayer.marker);
-        }
-        this.isDestructionOption(position);
+      } else if (this.getCurrentPhase() === PHASE.MOVING || this.getCurrentPhase() === PHASE.FLYING) {
+          var isAI = this.currentPlayer.type === 'AI';
+          var isNetwrok = this.currentPlayer.type === 'network';
+          if (isAI || isNetwrok) {
+              this.board[position] = currentPlayer.marker;
+              UI.Pieces.drawPiece(position, currentPlayer.marker);
+          }
+          this.isDestructionOption(position);
       }
     }
 
@@ -142,7 +134,7 @@ var GAME = {
    * If necessary, update the player game phase
    */
   updatePlayerPhase : function(player) {
-    var player = player || this.currentPlayer;
+    player = player || this.currentPlayer;
 
     if(this.getCurrentPhase(player) === PHASE.PLACING) {
       var playerHasNoPiecesInStock = player.stockPieces === 0;
@@ -400,7 +392,7 @@ var GAME = {
 angular.module('ngWindmill',[])
        .controller('ngWindmillCtrl', function($scope) {
 
-  $scope.title = 'Windmill';
+  $scope.title = 'Nine Men\'s Morris';
   $scope.GAME = GAME;
 
   // Little hack because we need the $scope in our GAME
