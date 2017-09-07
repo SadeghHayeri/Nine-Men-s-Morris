@@ -25,6 +25,8 @@ def placing():
         dataDict['phase']
     )
     selected_position = PLAYER.place()
+    if selected_position not in GAME.get_empty_positions():
+        raise Exception('%d is not empty!' % selected_position)
     return json.dumps({
         'selectedPosition': selected_position
     })
@@ -41,6 +43,8 @@ def moving():
         dataDict['phase']
     )
     origin, destination = PLAYER.move()
+    if (origin, destination) not in GAME.get_valid_movements():
+        raise Exception('%d -> %d is not a valid movement!' % (origin, destination))
     return json.dumps({
         'origin': origin,
         'destination': destination
@@ -58,6 +62,8 @@ def destroyPiece():
         dataDict['phase']
     )
     selected_piece = PLAYER.select_enemy_piece()
+    if selected_piece not in GAME.get_enemy_positions():
+        raise Exception('%d is not valid enemy position!' % selected_piece)
     return json.dumps({
         'selectedPiece': selected_piece
     })
