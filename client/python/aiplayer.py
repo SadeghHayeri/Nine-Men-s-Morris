@@ -3,13 +3,13 @@ import random
 
 class AIPlayer(Player):
     def place(self):
-        pos = random.randint(0, 24)
-        while not self.game.is_valid_position(pos, has_to_be_empty_position=True):
-            pos = random.randint(0, 24)
-        return pos
+        empty_positions = self.game.get_empty_positions()
+        return random.choice(empty_positions)
 
     def move(self):
-        pos1, pos2 = random.randint(0, 24), random.randint(0, 24)
-        while not self.game.is_valid_move(pos1, pos2):
-            pos1, pos2 = random.randint(0, 24), random.randint(0, 24)
-        return pos1, pos2
+        valid_movements = self.game.get_valid_movements()
+        return random.choice(valid_movements)
+
+    def select_enemy_piece(self):
+        enemy_positions = self.game.get_enemy_positions()
+        return random.choice(enemy_positions)
