@@ -51,9 +51,13 @@ Game::Game() {
     graph.push_back(make_pair(23, 16));
 }
 
-void Game::set_game(vector<int> new_board, int new_phase) {
+void Game::set_game(vector<int>& new_board, int new_phase) {
     board = new_board;
     phase = new_phase;
+    empty_positions.clear();
+    insider_positions.clear();
+    enemy_positions.clear();
+    valid_movements.clear();
 
     for (int i = 0; i < board.size(); ++i) {
         if(board[i] == 0)
@@ -76,7 +80,7 @@ void Game::set_game(vector<int> new_board, int new_phase) {
 }
 
 bool Game::can_fly() {
-    return phase == 3;
+    return phase == 2;
 }
 
 bool Game::is_neighbor_position(int a, int b) {

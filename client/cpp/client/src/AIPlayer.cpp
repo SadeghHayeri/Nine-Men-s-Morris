@@ -4,9 +4,16 @@
 
 #include <cstdlib>
 #include "AIPlayer.h"
+#include <iostream>
 
 int AIPlayer::place() {
     vector<int> empty_positions = game.get_empty_positions();
+
+    for(int e : empty_positions) {
+        cout << e << ", ";
+    }
+    cout << endl;
+
     unsigned long randomIndex = rand() % empty_positions.size();
     return empty_positions[randomIndex];
 }

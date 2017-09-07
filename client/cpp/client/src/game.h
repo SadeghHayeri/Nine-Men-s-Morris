@@ -29,7 +29,7 @@ using namespace std;
 class Game {
 public:
     Game();
-    void set_game(vector<int> new_board, int new_phase);
+    void set_game(vector<int>& new_board, int new_phase);
     bool can_fly();
     bool is_neighbor_position(int a, int b);
 
