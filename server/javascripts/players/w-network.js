@@ -14,54 +14,53 @@
   pickPosition: function(position) {
       var position, piecePosition, pieceAndPosition;
 
-      requestAddress = this.server.address + ':' + this.server.port
+      requestAddress = this.server.address + ':' + this.server.port;
       switch(this.phase) {
           case PHASE.PLACING:
               requestAddress += '/placing';
               break;
           case PHASE.MOVING:
-              requestAddress += '/moving';
-              break;
           case PHASE.FLYING:
-              requestAddress += '/flying';
+              requestAddress += '/moving';
               break;
           default:
               console.error('bad phase!')
+      }
+
+      var gameBoard = GAME.board
+      if(this.marker === false) {
+          gameBoard = _.map(GAME.board, function (x) {
+              if (x === true) {
+                  return false;
+              }
+              else if (x === false) {
+                  return true;
+              }
+              return x
+          });
       }
 
       var xhttp = new XMLHttpRequest();
       xhttp.open("POST", requestAddress, false);
       xhttp.send(JSON.stringify({
           'phase': this.phase,
-          'gameStatus': GAME.board
+          'gameBoard': gameBoard
       }));
 
       var data = JSON.parse(xhttp.responseText);
-      console.log(data);
+      console.log(this.username + ' Destroy ' + JSON.stringify(data));
       switch(this.phase) {
           case PHASE.PLACING:
-              position = data.selectedPosition;
+              GAME.setPieceOnPosition(data.selectedPosition);
               break;
           case PHASE.MOVING:
-              pieceAndPosition = [data.selectedPiece, data.selectedPosition];
-
-              position = _.last(pieceAndPosition);
-              piecePosition = _.first(pieceAndPosition);
-              break;
           case PHASE.FLYING:
-              pieceAndPosition = [data.selectedPiece, data.selectedPosition];
-
-              position = _.last(pieceAndPosition);
-              piecePosition = _.first(pieceAndPosition);
+              GAME.destroyPiece(data.origin);
+              GAME.setPieceOnPosition(data.destination);
               break;
           default:
-              pieceAndPosition = this.findPlacingPosition();
+              console.error('bad phase!')
       }
-      if (piecePosition !== undefined) {
-          GAME.destroyPiece(piecePosition);
-      }
-      GAME.setPieceOnPosition(position);
-
   },
     findPlacingPosition : function() {
         var selectedPosition, dangerPosition;
@@ -96,6 +95,33 @@
             }
         }
         return selectedPosition;
+    },
+    selectEnemyPiece : function() {
+        requestAddress = this.server.address + ':' + this.server.port;
+        requestAddress += '/selectEnemyPiece';
+
+        var gameBoard = GAME.board
+        if(this.marker === false) {
+            gameBoard = _.map(GAME.board, function (x) {
+                if (x === true) {
+                    return false;
+                }
+                else if (x === false) {
+                    return true;
+                }
+                return x
+            });
+        }
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", requestAddress, false);
+        xhttp.send(JSON.stringify({
+            'phase': this.phase,
+            'gameBoard': gameBoard
+        }));
+
+        var data = JSON.parse(xhttp.responseText);
+        return data.selectedPiece
     },
 
 });
