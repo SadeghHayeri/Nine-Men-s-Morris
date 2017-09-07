@@ -60,6 +60,9 @@ class Game:
                 return True
         return False
 
+    def get_board(self):
+        return  copy.deepcopy(self._board)
+
     def can_fly(self):
         return self._phase['name'] == 'Flying'
 
