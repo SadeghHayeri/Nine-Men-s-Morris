@@ -38,26 +38,24 @@ def moving():
         dataDict['gameBoard'],
         dataDict['phase']
     )
-    selected_piece, selected_position = PLAYER.move()
+    origin, destination = PLAYER.move()
     return json.dumps({
-        'selectedPiece': selected_piece,
-        'selectedPosition': selected_position
+        'origin': origin,
+        'destination': destination
     })
 
-@app.route('/flying', methods=['POST'])
-def flying():
+@app.route('/selectEnemyPiece', methods=['POST'])
+def destroyPiece():
     data = request.data
     dataDict = json.loads(data)
-    print
+    print dataDict
 
     global GAME, PLAYER
     GAME.set_game(
         dataDict['gameBoard'],
         dataDict['phase']
     )
-    selected_piece, selected_position = PLAYER.move()
+    selected_piece = PLAYER.select_enemy_piece()
     return json.dumps({
-        'selectedPiece': selected_piece,
-        'selectedPosition': selected_position
+        'selectedPiece': selected_piece
     })
-
