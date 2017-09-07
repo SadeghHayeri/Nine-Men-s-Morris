@@ -2,8 +2,10 @@
 var GAME = {
   init : function() {
     this.players        = [];
-    this.players[0]     = new AI('Daenerys', true);
-    // this.players[1]     = new Human('Jon Snow', false);
+    // this.players[0]     = new AI('Daenerys', true);
+    // this.players[1]     = new AI('Jon Snow', false);
+    // this.players[1]     = new Human('jon', false);
+    this.players[0]     = new Network('http://localhost', '5000', 'Daenerys', true);
     this.players[1]     = new Network('http://localhost', '5000', 'Jon Snow', false);
     this.currentPlayer  = this.players[Math.round(Math.random())];
     this.winMessage     = false;
@@ -55,8 +57,11 @@ var GAME = {
     if (this.isValidPosition(position)) {
       this.checkGameState(position);
     } else {
+
+      var isNetwork = this.currentPlayer.type === 'network';
       var isAI = this.currentPlayer.type === 'AI';
-      if(isAI) { // If it's not a valid position, generate another one
+
+      if(isAI || isNetwork) { // If it's not a valid position, generate another one
         this.currentPlayer.pickPosition();
       }
     }
@@ -80,14 +85,16 @@ var GAME = {
         this.isDestructionOption(position);
       } else if(this.getCurrentPhase() === PHASE.MOVING ) {
         var isAI = this.currentPlayer.type === 'AI';
-        if(isAI) {
+        var isNetwrok = this.currentPlayer.type === 'network';
+        if(isAI || isNetwrok) {
           this.board[position] = currentPlayer.marker;
           UI.Pieces.drawPiece(position, currentPlayer.marker);
         }
         this.isDestructionOption(position);
       } else if(this.getCurrentPhase() === PHASE.FLYING) {
         var isAI = this.currentPlayer.type === 'AI';
-        if(isAI) {
+        var isNetwrok = this.currentPlayer.type === 'network';
+        if(isAI || isNetwrok) {
           this.board[position] = currentPlayer.marker;
           UI.Pieces.drawPiece(position, currentPlayer.marker);
         }
@@ -328,8 +335,11 @@ var GAME = {
       // with one less piece.
       this.boardHistory   = [];
 
-      if (this.currentPlayer.type === 'AI') {
+      isAI = this.currentPlayer.type === 'AI';
+      isNetwork = this.currentPlayer.type === 'network';
+      if (isAI || isNetwork) {
         var pieceToBeDestroyed = this.currentPlayer.selectEnemyPiece();
+        console.warn(this.currentPlayer.username + ' Destroy ' + pieceToBeDestroyed);
         if (pieceToBeDestroyed !== undefined) {
           this.destroyPiece(pieceToBeDestroyed);
         }
