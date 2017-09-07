@@ -1,3 +1,20 @@
+############ BOARD SCHEMA ###########
+#     0------------1------------2   #
+#     |            |            |   #
+#     |   8--------9------10    |   #
+#     |   |        |       |    |   #
+#     |   |   16--17--18   |    |   #
+#     |   |   |        |   |    |   #
+#     7---15--23      19--11----3   #
+#     |   |   |        |   |    |   #
+#     |   |   22--21--20   |    |   #
+#     |   |        |       |    |   #
+#     |   14------13------12    |   #
+#     |            |            |   #
+#     6------------5------------4   #
+#####################################
+import copy
+
 class Game:
     def __init__(self):
         self._graph = [
@@ -14,16 +31,26 @@ class Game:
         self._board = new_board
         self._phase = new_phase
 
-    def is_valid_position(self, position, has_to_be_empty_position=False):
-        is_bad_position = position < 0 or position > (len(self._board)-1)
-        if is_bad_position:
-            return False
+        self._empty_positions = []
+        self._insider_positions = []
+        self._enemy_positions = []
+        self._valid_movements = []
 
-        is_empty = self._board[position] is None
-        if has_to_be_empty_position and not is_empty:
-            return False
+        for index, state in enumerate(self._board):
+            if state is None:
+                self._empty_positions += [index]
+            elif state is True:
+                self._insider_positions += [index]
+            elif state is False:
+                self._enemy_positions += [index]
+            else:
+                raise Exception('bad state!')
 
-        return True
+        for origin in self._insider_positions:
+            for destination in self._empty_positions:
+                is_neighbor_position = self.is_neighbor_position(origin, destination)
+                if is_neighbor_position or self.can_fly():
+                    self._valid_movements += [(origin, destination)]
 
     def is_neighbor_position(self, a, b):
         for edge in self._graph:
@@ -36,17 +63,14 @@ class Game:
     def can_fly(self):
         return self._phase['name'] == 'Flying'
 
-    def is_valid_move(self, origin, destination):
-        is_origin_valid = self.is_valid_position(origin)
-        is_destination_valid = self.is_valid_position(destination)
-        if not is_origin_valid or not is_destination_valid:
-            return False
+    def get_empty_positions(self):
+        return copy.deepcopy(self._empty_positions)
 
-        origin_is_own_piece = self._board[origin] == True
-        is_destination_empty = self._board[destination] == None
-        is_neighbor_position = self.is_neighbor_position(origin, destination)
+    def get_insider_positions(self):
+        return copy.deepcopy(self._insider_positions)
 
-        if origin_is_own_piece and is_destination_empty:
-            if is_neighbor_position or self.can_fly():
-                return True
-        return False
+    def get_enemy_positions(self):
+        return copy.deepcopy(self._enemy_positions)
+
+    def get_valid_movements(self):
+        return copy.deepcopy(self._valid_movements)

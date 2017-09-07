@@ -10,8 +10,12 @@ class Player:
 
     @abstractmethod
     def place(self):
-        return 0
+        pass
 
     @abstractmethod
     def move(self):
-        return 0, 1
+        pass
+
+    @abstractmethod
+    def select_enemy_piece(self):
+        pass
