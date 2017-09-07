@@ -2,7 +2,9 @@ from flask import Flask, request, abort
 import random, json
 from game import Game
 from aiplayer import AIPlayer
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 GAME = Game()
 PLAYER = AIPlayer(GAME)
