@@ -28,20 +28,27 @@ class Game:
         self._phase = None
 
     def set_game(self, new_board, new_phase):
-        self._board = new_board
-        self._phase = new_phase
 
         self._empty_positions = []
         self._insider_positions = []
         self._enemy_positions = []
         self._valid_movements = []
 
-        for index, state in enumerate(self._board):
-            if state is None:
+        self._phase = {
+            0: 'Placing',
+            1: 'Moving',
+            2: 'Flying'
+        }[new_phase]
+
+        for index, state in enumerate(new_board):
+            if state is 0:
+                self._board[index] = None
                 self._empty_positions += [index]
-            elif state is True:
+            elif state is 1:
+                self._board[index] = True
                 self._insider_positions += [index]
-            elif state is False:
+            elif state is -1:
+                self._board[index] = False
                 self._enemy_positions += [index]
             else:
                 raise Exception('bad state!')
@@ -64,7 +71,7 @@ class Game:
         return  copy.deepcopy(self._board)
 
     def can_fly(self):
-        return self._phase['name'] == 'Flying'
+        return self._phase == 'Flying'
 
     def get_empty_positions(self):
         return copy.deepcopy(self._empty_positions)
