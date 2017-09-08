@@ -6,8 +6,8 @@ Game game = Game();
 AIPlayer player = AIPlayer(game);
 
 
-int client::placing(int phase, std::vector<int> board) {
-    game.set_game(board, phase);
+int client::placing(int phase, std::vector<int> gameBoard) {
+    game.set_game(gameBoard, phase);
     int selected_position = player.place();
 
     // validation
@@ -24,8 +24,8 @@ int client::placing(int phase, std::vector<int> board) {
     return selected_position;
 }
 
-vector<int> client::moving(int phase, vector<int> board) {
-    game.set_game(board, phase);
+vector<int> client::moving(int phase, vector<int> gameBoard) {
+    game.set_game(gameBoard, phase);
     pair<int, int> selected_movement = player.move();
 
     // validation
@@ -45,8 +45,8 @@ vector<int> client::moving(int phase, vector<int> board) {
     return response;
 }
 
-int client::destroyPiece(int phase, std::vector<int> board) {
-    game.set_game(board, phase);
+int client::destroyPiece(int phase, std::vector<int> gameBoard) {
+    game.set_game(gameBoard, phase);
     int selected_position = player.select_enemy_piece();
 
     // validation

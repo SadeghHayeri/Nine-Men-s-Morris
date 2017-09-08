@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+7d5153b99cc4d56a1035048b12302945 client/codegen/ServiceGroupImpl.h

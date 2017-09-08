@@ -101,4 +101,4 @@ vector<int> Game::get_insider_positions() { return insider_positions; }
 
 vector<int> Game::get_enemy_positions() { return enemy_positions; }
 
-vector<pair<int, int> > Game::get_valid_movements() { return valid_movements; }
+vector< pair<int, int> > Game::get_valid_movements() { return valid_movements; }

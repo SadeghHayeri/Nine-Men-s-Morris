@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="client"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\client\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="client">
+				<Option output="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/deploy/share/ngrest/services/client.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/deploy/include"/>
+					<Add directory="/Users/sadegh/.ngrest/ngrest-build/deploy/include"/>
+					<Add directory="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 client"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="client/fast">
+				<Option output="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/deploy/share/ngrest/services/client.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/deploy/include"/>
+					<Add directory="/Users/sadegh/.ngrest/ngrest-build/deploy/include"/>
+					<Add directory="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 client/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/AIPlayer.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/AIPlayer.h">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/client.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/client.h">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/game.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/game.h">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/main.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/player.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/src/player.h">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/codegen/ServiceGroupImpl.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/codegen/ServiceGroupImpl.h">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/codegen/ServiceGroupImpl.h.rule">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/codegen/clientWrapper.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/codegen/clientWrapper.h">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/client/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\client\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

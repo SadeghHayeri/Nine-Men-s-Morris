@@ -9,13 +9,13 @@ class client: public ngrest::Service {
 public:
 
     // *method: POST
-    int placing(int phase, std::vector<int> board);
+    int placing(int phase, std::vector<int> gameBoard);
 
     // *method: POST
-    std::vector<int> moving(int phase, std::vector<int> board);
+    std::vector<int> moving(int phase, std::vector<int> gameBoard);
 
     // *method: POST
-    int destroyPiece(int phase, std::vector<int> board);
+    int destroyPiece(int phase, std::vector<int> gameBoard);
 
 };
 

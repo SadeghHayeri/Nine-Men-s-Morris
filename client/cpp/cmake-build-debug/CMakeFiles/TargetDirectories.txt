@@ -1,0 +1,5 @@
+/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/CMakeFiles/rebuild_cache.dir
+/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/CMakeFiles/edit_cache.dir
+/Users/sadegh/Desktop/Nine-Men-s-Morris/client/cpp/cmake-build-debug/client/CMakeFiles/client.dir

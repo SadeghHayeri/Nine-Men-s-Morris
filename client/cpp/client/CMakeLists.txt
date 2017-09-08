@@ -22,7 +22,7 @@ list(APPEND CLIENT_SOURCES ${CLIENT_CODEGEN_SOURCES})
 
 include_directories(${PROJECT_SOURCE_DIR} $ENV{NGREST_EXT_INCLUDES})
 
-add_library(client MODULE ${CLIENT_SOURCES})
+add_library(client MODULE ${CLIENT_SOURCES} src/game.cpp src/game.h src/player.cpp src/player.h src/AIPlayer.cpp src/AIPlayer.h)
 
 set_target_properties(client PROPERTIES PREFIX "")
 set_target_properties(client PROPERTIES
