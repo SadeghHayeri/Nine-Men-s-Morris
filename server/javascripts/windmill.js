@@ -4,9 +4,9 @@ var GAME = {
     this.players        = [];
     // this.players[0]     = new AI('Daenerys', true);
     // this.players[1]     = new AI('Jon Snow', false);
-    // this.players[1]     = new Human('jon', false);
+    this.players[1]     = new Human('jon', false);
     this.players[0]     = new Network('http://localhost', '5000', 'Daenerys', true);
-    this.players[1]     = new Network('http://localhost', '5000', 'Jon Snow', false);
+    // this.players[1]     = new Network('http://localhost', '5000', 'Jon Snow', false);
     this.currentPlayer  = this.players[Math.round(Math.random())];
     this.winMessage     = false;
     this.newGameButton  = false;
@@ -16,7 +16,7 @@ var GAME = {
     this.boardSize      = boardSize;
     this.board          = [];
     this.boardHistory   = []; // The board is the same for three times                    = tie
-    this.speed          = 500;
+    this.speed          = 100;
     while(boardSize--) this.board.push(undefined);
     this.graph = [
                     [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 0],
